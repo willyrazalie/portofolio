@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My Portofolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">Make things Awesome!</div>
+        <div class="hamburger" id="hamburger">
+            &#9776;
+          </div>
+        <nav id="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Hello, I'm Willy!</h1>
+            <p>I am interested in learning about IT, have passion to learn about programming language and AI automation</p>
+            <p>Nice to meet you, and lets connect!!</p>
+            <div class="hero-buttons">
+                <a href="projects" class="btn blue">See my practice</a>
+                <a href="https://www.linkedin.com/in/willy-razalie" class="btn red" target="_blank">LinkedIn</a>
+                <a href="https://www.github.com/willyrazalie" class="btn green" target="_blank">github</a>
+            </div>
+        </section>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hi! I’m a front-end developer in the making, with over 15 years of experience in hospitality, customer service, and order management. After years of working closely with people and solving real-world problems, I’ve discovered a new passion in tech — building websites that are clear, helpful, and easy to use. I’ve been learning HTML, CSS, and JavaScript for the past year, and I’m now actively looking for beginner-friendly projects where I can apply what I’ve learned, get hands-on experience, and grow through feedback and collaboration. I’m especially open to guidance from mentors, code reviews, or working with a team. I bring strong attention to detail, great communication skills, and a commitment to continuous learning. My goal is to become a reliable front-end developer who can build clean, responsive, and user-centered websites. <br> Let’s connect and build something impactful together!</p>
+            <div class="skills">
+                <span class="skill red">HTML</span>
+                <span class="skill blue">CSS</span>
+                <span class="skill green">JavaScript</span>
+                <span class="skill yellow">Generative AI</span>
+            </div>
+        </section>
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="project-list">
+                <div class="project-card yellow">
+                    <h3>My Portofolio</h3>
+                    <p>This landing page, contain my portfolio collection, my little background and my contact</p>
+                    <a href="#">View code on Github!!</a>
+                </div>
+                <div class="project-card blue">
+                    <h3>Coming Soon!!</h3>
+                    <p>Coming Soon!!</p>
+                    <a href="#">View on Github</a>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <a href="mailto:willy_razalie@yahoo.com">Email</a>
+            <a href="https://wa.me/+628118880596">Whatsapp</a>
+            <a href="https://www.linkedin.com/in/willy-razalie">linkedin</a>
+            <a href="https://www.github.com/willyrazalie">github</a>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright &copy; 2025 Willy Razalie</p>
+        <p>Just Do It!!!</p>
+    </footer>
+    <script>
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => observer.observe(section));
+    </script>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

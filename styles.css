@@ -1,0 +1,240 @@
+body {
+    margin: 0;
+    font-family: 'Fredoka', sans-serif;
+    color: #333;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: #FFFDD0;
+  }
+  
+  .btn {
+    display: inline-block;
+    margin: 1rem 0.5rem;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn.blue { background-color: #007bff; }
+  .btn.red { background-color: #dc3545; }
+  .btn.green { background-color: green; }
+  
+  /* === BACKGROUND EFFECT === */
+  main {
+    position: relative;
+    z-index: 0;
+  }
+  
+  main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('lego-background.jpg');
+    background-size: 130%;
+    opacity: 0.5;
+    z-index: -1;
+  }
+  
+  /* === HEADER & FOOTER === */
+  header, footer {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bolder;
+  }
+  
+  header::before,
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #333 url('lego-header.jpg') repeat center;
+    opacity: 0.75;
+    z-index: 0;
+  }
+  
+  header *, footer * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  /* === NAVIGATION === */
+  nav a {
+    margin-left: 1rem;
+  }
+  
+  /* === HERO SECTION === */
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* === SECTION ANIMATION === */
+  section {
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-in-out;
+  }
+  
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* === SKILLS === */
+  .skills {
+    margin-top: 1rem;
+  }
+  
+  .skill {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .skill.red { background-color: #e63946; }
+  .skill.blue { background-color: #1d3557; }
+  .skill.green { background-color: #008000; }
+  .skill.yellow { background-color: #f1c40f; }
+  
+  /* === PROJECT LIST === */
+  .project-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .project-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  .project-card h3 {
+    margin-top: 0;
+  }
+  
+  .project-card.yellow { background-color: #f4d35e; }
+  .project-card.blue { background-color: #4e71ff; }
+  
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    color: white;
+  }
+  
+  /* === RESPONSIVE DESIGN === */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .hamburger {
+      display: block;
+    }
+  
+    nav {
+      display: none;
+      flex-direction: column;
+      background-color: rgba(255, 255, 255, 0.95);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+  
+    nav a {
+      margin: 1rem;
+      padding: 0.5rem;
+    }
+  
+    nav.show {
+      display: flex;
+    }
+  
+    .hero {
+      padding: 2rem 1rem;
+      text-align: left;
+    }
+  
+    .hero h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-buttons {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .hero-buttons .btn {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+  
+    .project-list {
+      flex-direction: column;
+    }
+  
+    .project-card {
+      width: 100%;
+    }
+  }
