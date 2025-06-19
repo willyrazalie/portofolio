@@ -1,240 +1,343 @@
+:root {
+  --bg-color: white;
+  --text-color: #333;
+  --header-footer-bg: #333;
+  --nav-color: black;
+}
+
+body.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #f0f0f0;
+  --header-footer-bg: #000;
+  --nav-color: #f0f0f0;
+}
+
+/* ========== RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: 'Fredoka', sans-serif;
-    color: #333;
-  }
-  
-  a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    transition: 0.2s ease-in-out;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-    color: #FFFDD0;
-  }
-  
-  .btn {
-    display: inline-block;
-    margin: 1rem 0.5rem;
-    padding: 0.75rem 1.5rem;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    text-align: center;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .btn:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .btn.blue { background-color: #007bff; }
-  .btn.red { background-color: #dc3545; }
-  .btn.green { background-color: green; }
-  
-  /* === BACKGROUND EFFECT === */
-  main {
-    position: relative;
-    z-index: 0;
-  }
-  
-  main::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('lego-background.jpg');
-    background-size: 130%;
-    opacity: 0.5;
-    z-index: -1;
-  }
-  
-  /* === HEADER & FOOTER === */
-  header, footer {
-    position: relative;
-    overflow: hidden;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bolder;
-  }
-  
-  header::before,
-  footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #333 url('lego-header.jpg') repeat center;
-    opacity: 0.75;
-    z-index: 0;
-  }
-  
-  header *, footer * {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-  }
-  
+  font-family: 'Fredoka', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+main {
+  position: relative;
+  z-index: 0;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('lego-background.jpg');
+  background-size: 130%;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* ========== THEME TOGGLE ========== */
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  padding: 0.6rem 0.8rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode #theme-toggle {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+/* ========== HEADER ========== */
+header {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  font-weight: bold;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333 url('lego-header.jpg') repeat center;
+  background-size: cover;
+  opacity: 0.75;
+  z-index: 0;
+}
+
+header * {
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: transparent;
+  padding: 1rem 0;
+  border-radius: 0;
+}
+
+nav a {
+  margin: 0 1rem;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: var(--nav-color);
+  font-weight: bold;
+  transition: 0.2s;
+  background-color: transparent;
+}
+
+nav a:hover {
+  color: #FFFDD0;
+  text-decoration: underline;
+}
+
+nav.show {
+  display: flex !important;
+}
+
+/* ========== HERO ========== */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  transition: 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn.blue { background-color: #007bff; }
+.btn.red { background-color: #dc3545; }
+.btn.green { background-color: green; }
+
+/* ========== SECTIONS ========== */
+section {
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-in-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== ABOUT ========== */
+.skills {
+  margin-top: 1rem;
+}
+
+.skill {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.skill.red { background-color: #e63946; }
+.skill.blue { background-color: #1d3557; }
+.skill.green { background-color: #008000; }
+.skill.yellow { background-color: #f1c40f; }
+.skill.orange { background-color: #ff8c00;}
+
+/* ========== PROJECTS ========== */
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project-card {
+  flex: 1;
+  min-width: 200px;
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+}
+
+.project-card.yellow { background-color: #f4d35e; color: #000; }
+.project-card.blue { background-color: #4e71ff; }
+
+/* ========== CONTACT ========== */
+#contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+#contact a {
+  flex: 1 1 200px;
+  max-width: 220px;
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#contact a:nth-child(1) { background-color: rgba(0, 123, 255, 0.2); }
+#contact a:nth-child(2) { background-color: rgba(40, 167, 69, 0.2); }
+#contact a:nth-child(3) { background-color: rgba(0, 0, 0, 0.2); color: white; }
+#contact a:nth-child(4) { background-color: rgba(108, 117, 125, 0.2); }
+
+#contact a:hover {
+  filter: brightness(1.2);
+}
+
+/* ========== FOOTER ========== */
+footer {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333 url('lego-header.jpg') repeat center;
+  background-size: cover;
+  opacity: 0.75;
+  z-index: 0;
+}
+
+footer * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
   .hamburger {
+    display: block;
+  }
+
+  nav {
     display: none;
-    font-size: 2rem;
-    cursor: pointer;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 0 0 10px 10px;
+    z-index: 10;
   }
-  
-  /* === NAVIGATION === */
+
   nav a {
-    margin-left: 1rem;
+    margin: 1rem;
+    padding: 0.5rem;
   }
-  
-  /* === HERO SECTION === */
+
   .hero {
-    text-align: center;
-    padding: 4rem 2rem;
+    padding: 2rem 1rem;
+    text-align: left;
   }
-  
+
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
-  
+
   .hero-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  /* === SECTION ANIMATION === */
-  section {
-    padding: 2rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease-in-out;
+
+  .btn {
+    width: 100%;
+    margin: 0.5rem 0;
   }
-  
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* === SKILLS === */
-  .skills {
-    margin-top: 1rem;
-  }
-  
-  .skill {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin-right: 0.5rem;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .skill.red { background-color: #e63946; }
-  .skill.blue { background-color: #1d3557; }
-  .skill.green { background-color: #008000; }
-  .skill.yellow { background-color: #f1c40f; }
-  
-  /* === PROJECT LIST === */
+
   .project-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
   }
-  
+
   .project-card {
-    flex: 1;
-    min-width: 200px;
-    padding: 1rem;
-    border-radius: 10px;
-    color: white;
+    width: 100%;
   }
-  
-  .project-card h3 {
-    margin-top: 0;
+
+  #contact {
+    flex-direction: column;
+    align-items: stretch;
   }
-  
-  .project-card.yellow { background-color: #f4d35e; }
-  .project-card.blue { background-color: #4e71ff; }
-  
-  /* === FOOTER === */
-  footer {
-    text-align: center;
-    padding: 1rem;
-    color: white;
+
+  #contact a {
+    max-width: 100%;
   }
-  
-  /* === RESPONSIVE DESIGN === */
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .hamburger {
-      display: block;
-    }
-  
-    nav {
-      display: none;
-      flex-direction: column;
-      background-color: rgba(255, 255, 255, 0.95);
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      border-radius: 0 0 10px 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-    }
-  
-    nav a {
-      margin: 1rem;
-      padding: 0.5rem;
-    }
-  
-    nav.show {
-      display: flex;
-    }
-  
-    .hero {
-      padding: 2rem 1rem;
-      text-align: left;
-    }
-  
-    .hero h1 {
-      font-size: 2rem;
-    }
-  
-    .hero-buttons {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .hero-buttons .btn {
-      width: 100%;
-      margin: 0.5rem 0;
-    }
-  
-    .project-list {
-      flex-direction: column;
-    }
-  
-    .project-card {
-      width: 100%;
-    }
-  }
+}
