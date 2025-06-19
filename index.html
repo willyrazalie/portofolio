@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
 </head>
 <body>
+    <button id="theme-toggle" class="btn">Dark Mode</button>
+    <script src="script.js"></script>
     <header>
         <div class="logo">Make things Awesome!</div>
         <div class="hamburger" id="hamburger">
@@ -22,7 +24,8 @@
     <main>
         <section class="hero">
             <h1>Hello, I'm Willy!</h1>
-            <p>I am interested in learning about IT, have passion to learn about programming language and AI automation</p>
+            <p>I am interested in learning about IT, have passion to learn about data analysis, programming language and AI automation</p>
+            <p>Also excited to any opportunities in Data Analysis project</p>
             <p>Nice to meet you, and lets connect!!</p>
             <div class="hero-buttons">
                 <a href="projects" class="btn blue">See my practice</a>
@@ -37,6 +40,7 @@
                 <span class="skill red">HTML</span>
                 <span class="skill blue">CSS</span>
                 <span class="skill green">JavaScript</span>
+                <span class="skill orange">Data Analysis</span>
                 <span class="skill yellow">Generative AI</span>
             </div>
         </section>
@@ -46,7 +50,7 @@
                 <div class="project-card yellow">
                     <h3>My Portofolio</h3>
                     <p>This landing page, contain my portfolio collection, my little background and my contact</p>
-                    <a href="https://willyrazalie.github.io/portofolio/">View code on Github!!</a>
+                    <a href="https://www.github.com/willyrazalie/portofolio">View code on Github!!</a>
                 </div>
                 <div class="project-card blue">
                     <h3>Coming Soon!!</h3>
@@ -56,36 +60,33 @@
             </div>
         </section>
         <section id="contact">
-            <h2>Contact</h2>
             <a href="mailto:willy_razalie@yahoo.com">Email</a>
             <a href="https://wa.me/+628118880596">Whatsapp</a>
             <a href="https://www.linkedin.com/in/willy-razalie">linkedin</a>
             <a href="https://www.github.com/willyrazalie">github</a>
         </section>
     </main>
+
     <footer>
-        <p>Copyright &copy; 2025 Willy Razalie</p>
+        <p>&copy; 2025 Willy Razalie</p>
         <p>Just Do It!!!</p>
     </footer>
-    <script>
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        sections.forEach(section => observer.observe(section));
-    </script>
 
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const nav = document.getElementById('nav-links');
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('show');
-        });
-    </script>
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('nav-links').classList.toggle('show');
+    });
+
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+  </script>
 </body>
 </html>
